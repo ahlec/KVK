@@ -3,8 +3,6 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace KristallValueKarte
 {
@@ -12,7 +10,11 @@ namespace KristallValueKarte
     {
         private Dictionary<string, KristallDataPiece> _dataPieces = new Dictionary<string, KristallDataPiece>();
         private Dictionary<object, KristallDataGroup> _dataGroups = new Dictionary<object, KristallDataGroup>();
-
+		
+		public KristallDataFile()
+		{
+		}
+		
         public KristallDataFile(string filename)
         {
             FileStream stream = new FileStream(filename, FileMode.Open);
@@ -76,5 +78,10 @@ namespace KristallValueKarte
             }
             throw new ArgumentException();
         }
+		
+		public void Save(string filename)
+		{
+			throw new NotImplementedException();
+		}
     }
 }

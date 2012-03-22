@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="KristallValueKarte/KristallDataFile.cs">
+    <Files>
+      <File FileName="KristallValueKarte/Main.cs" Line="4" Column="2" />
+      <File FileName="KristallValueKarte/KristallDataGroup.cs" Line="5" Column="29" />
+      <File FileName="KristallValueKarte/KristallDataPiece.cs" Line="6" Column="29" />
+      <File FileName="KristallValueKarte/KristallDataType.cs" Line="1" Column="29" />
+      <File FileName="KristallValueKarte/KristallDataFile.cs" Line="85" Column="4" />
+      <File FileName="KristallValueKarte/KristallDataAttribute.cs" Line="4" Column="29" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
