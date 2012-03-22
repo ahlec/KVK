@@ -1,0 +1,5 @@
++----------------------------------------+
++ .KVK (backronym: Kristall Value Karte) +
++----------------------------------------+
+
+A .NET C# library interpretation of the custom filetype format .KVK, which was designed for Pokemon Kristall, the C# Pokemon engine designed by Jacob Deitloff.
