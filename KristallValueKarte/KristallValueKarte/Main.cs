@@ -6,7 +6,12 @@ namespace KristallValueKarte
 	{
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("Hello World!");
+			KristallDataFile dataFile = new KristallDataFile();
+			KristallDataPiece piece = new KristallDataPiece("hello world");
+			piece.SetValue(KristallDataType.String, "Jacob Deitloff");
+			dataFile.AddPiece(piece);
+			
+			dataFile.Save("hello world.kvk");
 		}
 	}
 }

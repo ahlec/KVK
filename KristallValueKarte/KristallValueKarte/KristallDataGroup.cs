@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -6,6 +6,7 @@ namespace KristallValueKarte
 {
     public class KristallDataGroup
     {
+		private string _name;
         private object _identifier;
         private Dictionary<string, KristallDataPiece> _dataPieces = new Dictionary<string, KristallDataPiece>();
 
@@ -25,7 +26,8 @@ namespace KristallValueKarte
                 _dataPieces.Add(dataPiece.Name, dataPiece);
             }
         }
-
+		
+		public string Name { get { return _name; } }
         public object Identifier { get { return _identifier; } }
 
         public KristallDataPiece Piece(string name)

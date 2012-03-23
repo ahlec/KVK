@@ -9,7 +9,7 @@ namespace KristallValueKarte
     public class KristallDataFile
     {
         private Dictionary<string, KristallDataPiece> _dataPieces = new Dictionary<string, KristallDataPiece>();
-        private Dictionary<object, KristallDataGroup> _dataGroups = new Dictionary<object, KristallDataGroup>();
+        private Dictionary<string, KristallDataGroup> _dataGroups = new Dictionary<string, KristallDataGroup>();
 		
 		public KristallDataFile()
 		{
@@ -28,7 +28,7 @@ namespace KristallValueKarte
             foreach (Match group in groupCodes)
             {
                 dataGroup = new KristallDataGroup(group.Value);
-                _dataGroups.Add(dataGroup.Identifier, dataGroup);
+                _dataGroups.Add(dataGroup.Name + "-" + dataGroup.Identifier.ToString(), dataGroup);
             }
 
             kvkCode = Regex.Replace(kvkCode, "G(.*?)G", "");
@@ -38,11 +38,25 @@ namespace KristallValueKarte
             {
                 if (piece.Value.Length == 1) // must be the final K of the file
                     break;
-                dataPiece = new KristallDataPiece(piece.Value);
+                dataPiece = KristallDataPiece.Parse(piece.Value);
                 _dataPieces.Add(dataPiece.Name, dataPiece);
             }
         }
-
+		
+		public void AddGroup(KristallDataGroup group)
+		{
+			if (_dataGroups.ContainsKey(group.Name + "-" + group.Identifier.ToString()))
+				throw new ArgumentException("The data file already contains a group with this name and identifier.");
+			_dataGroups.Add(group.Name + "-" + group.Identifier.ToString(), group);
+		}
+		
+		public void AddPiece(KristallDataPiece piece)
+		{
+			if (_dataPieces.ContainsKey(piece.Name))
+				throw new ArgumentException("The data file already contains a piece with this name.");
+			_dataPieces.Add(piece.Name, piece);
+		}
+		
         public KristallDataPiece Piece(string name)
         {
             if (_dataPieces.ContainsKey(name))
@@ -50,10 +64,10 @@ namespace KristallValueKarte
             return null;
         }
 
-        public KristallDataGroup Group(object identifier)
+        public KristallDataGroup Group(string name, object identifier)
         {
-            if (_dataGroups.ContainsKey(identifier))
-                return _dataGroups[identifier];
+            if (_dataGroups.ContainsKey(name + "-" + identifier.ToString()))
+                return _dataGroups[name + "-" + identifier.ToString()];
             return null;
         }
 
@@ -78,10 +92,35 @@ namespace KristallValueKarte
             }
             throw new ArgumentException();
         }
+		public static string Encode(KristallDataType dataType, object value)
+		{
+			StringBuilder stringFactory = new StringBuilder();
+			switch (dataType)
+			{
+				case (KristallDataType.String):
+				{
+					foreach (char character in (value as string))
+					{
+						stringFactory.Append(String.Format("{0:x4}", Convert.ToInt16(character)));
+					}
+					return stringFactory.ToString().ToUpper();
+				}
+			}
+			throw new ArgumentException();
+		}
 		
 		public void Save(string filename)
 		{
-			throw new NotImplementedException();
+			StringBuilder stringFactory = new StringBuilder();
+			foreach (KristallDataPiece dataPiece in _dataPieces.Values)
+				stringFactory.Append(KristallDataPiece.Encode(dataPiece));
+			stringFactory.Append("K");
+			
+			FileStream stream = new FileStream(filename, FileMode.Create);
+			TextWriter writer = new StreamWriter(stream);
+			writer.WriteLine(stringFactory.ToString());
+			writer.Close();
+			stream.Close();
 		}
     }
 }
