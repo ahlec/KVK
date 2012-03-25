@@ -1,17 +1,33 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="KristallValueKarte/KristallDataPiece.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KristallValueKarte/Main.cs">
     <Files>
-      <File FileName="KristallValueKarte/Main.cs" Line="12" Column="29" />
+      <File FileName="KristallValueKarte/Main.cs" Line="50" Column="6" />
       <File FileName="KristallValueKarte/KristallDataGroup.cs" Line="5" Column="29" />
       <File FileName="KristallValueKarte/KristallDataPiece.cs" Line="30" Column="14" />
       <File FileName="KristallValueKarte/KristallDataType.cs" Line="1" Column="29" />
-      <File FileName="KristallValueKarte/KristallDataFile.cs" Line="41" Column="66" />
-      <File FileName="KristallValueKarte/KristallDataAttribute.cs" Line="27" Column="57" />
+      <File FileName="KristallValueKarte/KristallDataFile.cs" Line="15" Column="4" />
+      <File FileName="KristallValueKarte/KristallDataAttribute.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.KristallValueKarte>
+    <MonoDevelop.Ide.CustomExecutionModes>
+      <Data Name="CLI Help" Id="57fc5324-d595-422c-a610-2690c3d1f96f" ModeId="Default">
+        <CommandData>
+          <Item Key="MonoDevelop.Ide.Execution.CustomArgsCustomizer">
+            <Value Arguments="-h" ctype="CustomArgsExecutionModeData">
+              <EnvironmentVariables />
+            </Value>
+          </Item>
+          <Item Key="MonoDevelop.Ide.Execution.MonoExecutionCustomizer">
+            <Value ctype="MonoExecutionParameters" />
+          </Item>
+        </CommandData>
+      </Data>
+    </MonoDevelop.Ide.CustomExecutionModes>
+  </MonoDevelop.Ide.ItemProperties.KristallValueKarte>
 </Properties>

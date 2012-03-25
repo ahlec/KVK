@@ -1,0 +1,8 @@
+Usage:
+	kvk (filename) (data) [value]
+Example:
+	kvk data.kvk data 1
+Options:
+	-h, --help	Displays this help menu
+	--example_file	Generates an example file contain "Hello World" as data
+	-r, --read	Reads the data and value from a kvk-encoded file	
