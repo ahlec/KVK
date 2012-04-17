@@ -7,7 +7,10 @@ namespace KristallValueKarte
 {
     public class KristallDataPiece
     {
-        Dictionary<string, KristallDataAttribute> _attributes = new Dictionary<string, KristallDataAttribute>();
+        private Dictionary<string, KristallDataAttribute> _attributes = new Dictionary<string, KristallDataAttribute>();
+		private KristallDataType _type;
+        private string _name;
+        private object _value;
 		
 		private KristallDataPiece() // Only to be used when we're parsing the piece from code
 		{
@@ -15,8 +18,36 @@ namespace KristallValueKarte
 		
 		public KristallDataPiece(string name)
 		{
+			if (String.IsNullOrEmpty(name))
+				throw new InvalidNameException();
 			this._name = name;
 		}
+		public KristallDataPiece(string name, int initialValue) : this(name)
+		{
+			_type = KristallDataType.Integer;
+			_value = initialValue;
+		}
+		public KristallDataPiece(string name, float initialValue) : this(name)
+		{
+			_type = KristallDataType.Float;
+			_value = initialValue;
+		}
+		public KristallDataPiece(string name, double initialValue) : this(name)
+		{
+			_type = KristallDataType.Double;
+			_value = initialValue;
+		}
+		public KristallDataPiece(string name, string initialValue) : this(name)
+		{
+			_type = KristallDataType.String;
+			_value = initialValue;
+		}
+		public KristallDataPiece(string name, bool initialValue) : this(name)
+		{
+			_type = KristallDataType.Boolean;
+			_value = initialValue;
+		}
+		
 		
         public static KristallDataPiece Parse(string code)
         {
@@ -49,20 +80,61 @@ namespace KristallValueKarte
 				stringFactory.Append(KristallDataAttribute.Encode(attribute));
 			}
 			if (piece._attributes.Count > 0)
+			{
 				stringFactory.Append("M");
+			}
 			stringFactory.Append("V");
 			stringFactory.Append(String.Format("{0:x4}", (int)piece._type).ToUpper());
 			stringFactory.Append(KristallDataFile.Encode(piece._type, piece._value));
 			return stringFactory.ToString();
 		}
 
-        private KristallDataType _type;
-        private string _name;
-        private object _value;
-
         public KristallDataType Type { get { return _type; } }
         public string Name { get { return _name; } }
         public object Value { get { return _value; } }
+		
+		public T GetValue<T>()
+		{
+			switch (_type)
+			{
+				case KristallDataType.String:
+				{
+					if (typeof(T) != typeof(String))
+						throw new InvalidDataTypeException();
+					break;
+				}
+				case KristallDataType.Integer:
+				{
+					if (typeof(T) != typeof(Int32))
+						throw new InvalidDataTypeException();
+					break;
+				}
+				case KristallDataType.Boolean:
+				{
+					if (typeof(T) != typeof(Boolean))
+						throw new InvalidDataTypeException();
+					break;
+				}
+				case KristallDataType.Double:
+				{
+					if (typeof(T) != typeof(Double))
+						throw new InvalidDataTypeException();
+					break;
+				}
+				case KristallDataType.Float:
+				{
+					if (typeof(T) != typeof(float))
+						throw new InvalidDataTypeException();
+					break;
+				}
+				default:
+				{
+					throw new InvalidDataTypeException();
+				}
+			}
+			
+			return (T)_value;
+		}
 	
 		public void SetValue(KristallDataType dataType, object value)
 		{

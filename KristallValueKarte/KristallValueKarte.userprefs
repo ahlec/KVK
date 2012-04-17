@@ -1,17 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="KristallValueKarte/Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KristallValueKarte/KristallDataGroup.cs">
     <Files>
-      <File FileName="KristallValueKarte/Main.cs" Line="50" Column="6" />
-      <File FileName="KristallValueKarte/KristallDataGroup.cs" Line="5" Column="29" />
-      <File FileName="KristallValueKarte/KristallDataPiece.cs" Line="30" Column="14" />
-      <File FileName="KristallValueKarte/KristallDataType.cs" Line="1" Column="29" />
+      <File FileName="KristallValueKarte/Main.cs" Line="40" Column="1" />
+      <File FileName="KristallValueKarte/KristallDataPiece.cs" Line="157" Column="10" />
+      <File FileName="KristallValueKarte/KristallDataGroup.cs" Line="54" Column="65" />
       <File FileName="KristallValueKarte/KristallDataFile.cs" Line="15" Column="4" />
-      <File FileName="KristallValueKarte/KristallDataAttribute.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/home/jacob/Code/kvk/KristallValueKarte/KristallValueKarte/Main.cs" line="40" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.KristallValueKarte>

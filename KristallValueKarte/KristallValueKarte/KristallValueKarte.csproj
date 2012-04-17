@@ -43,6 +43,9 @@
     <Compile Include="KristallDataGroup.cs" />
     <Compile Include="KristallDataPiece.cs" />
     <Compile Include="KristallDataType.cs" />
+    <Compile Include="IKristallDataType.cs" />
+    <Compile Include="InvalidNameException.cs" />
+    <Compile Include="InvalidDataTypeException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -27,7 +27,7 @@ namespace KristallValueKarte
             KristallDataGroup dataGroup;
             foreach (Match group in groupCodes)
             {
-                dataGroup = new KristallDataGroup(group.Value);
+                dataGroup = KristallDataGroup.Parse(group.Value);
                 _dataGroups.Add(dataGroup.Name + "-" + dataGroup.Identifier.ToString(), dataGroup);
             }
 
@@ -85,6 +85,10 @@ namespace KristallValueKarte
                         }
                         return stringFactory.ToString();
                     }
+				case (KristallDataType.Integer):
+				{
+					return int.Parse(value, System.Globalization.NumberStyles.HexNumber);
+				}
                 case (KristallDataType.Boolean):
                     {
                         return int.Parse(value) == 1 ? true : false;
@@ -92,6 +96,7 @@ namespace KristallValueKarte
             }
             throw new ArgumentException();
         }
+		
 		public static string Encode(KristallDataType dataType, object value)
 		{
 			StringBuilder stringFactory = new StringBuilder();
@@ -105,8 +110,17 @@ namespace KristallValueKarte
 					}
 					return stringFactory.ToString().ToUpper();
 				}
+				case (KristallDataType.Boolean):
+				{
+					return ((bool)value ? "1" : "0");
+				}
+				case (KristallDataType.Integer):
+				{
+					return Convert.ToString((int)value, 16);
+					//return int.Parse(value, System.Globalization.NumberStyles.HexNumber);
+				}
 			}
-			throw new ArgumentException();
+			throw new NotImplementedException();
 		}
 		
 		public void Save(string filename)
@@ -118,7 +132,7 @@ namespace KristallValueKarte
 			
 			FileStream stream = new FileStream(filename, FileMode.Create);
 			TextWriter writer = new StreamWriter(stream);
-			writer.WriteLine(stringFactory.ToString());
+			writer.Write(stringFactory.ToString());
 			writer.Close();
 			stream.Close();
 		}

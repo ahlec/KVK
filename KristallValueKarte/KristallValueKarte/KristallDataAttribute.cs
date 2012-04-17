@@ -13,6 +13,7 @@ namespace KristallValueKarte
 		private KristallDataAttribute() // used only for interpretting from within the code
 		{
 		}
+		
 		public KristallDataAttribute(string name)
 		{
 			this._name = _name;

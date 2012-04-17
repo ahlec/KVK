@@ -30,16 +30,19 @@ namespace KristallValueKarte
 		}
 		public static void Main (string[] args)
 		{
-			if (args.Length == 0) 
+			KristallDataFile dataFile = new KristallDataFile();
+			dataFile.AddPiece(new KristallDataPiece("full name", "Jacob Deitloff"));
+			dataFile.AddPiece(new KristallDataPiece("age", 19));
+			dataFile.AddPiece(new KristallDataPiece("is male", true));
+			dataFile.Save("hello world.kvk");
+			
+			KristallDataFile parsed = new KristallDataFile("hello world.kvk");
+			parsed.ToString();
+			
+			/*if (args.Length == 0) 
 			{
 				Console.WriteLine ("Usage: kvk [options] (file) (datapiece) [value]");
 				Console.WriteLine ("Use -h, or --help for help!");
-//				KristallDataFile dataFile = new KristallDataFile ();
-//				KristallDataPiece piece = new KristallDataPiece ("hello world");
-//				piece.SetValue (KristallDataType.String, "Jacob Deitloff");
-//				dataFile.AddPiece (piece);
-//			
-//				dataFile.Save ("hello world.kvk");
 			} 
 			else 
 			{
@@ -47,6 +50,8 @@ namespace KristallValueKarte
 				{
 					Console.WriteLine (arg);
 					if (arg == "-h")
+					{
+					}
 				}
 				switch (arg)
 				{
@@ -66,7 +71,7 @@ namespace KristallValueKarte
 						break;
 					}
 				}
-			}
+			}*/
 		}
 	}
 }
